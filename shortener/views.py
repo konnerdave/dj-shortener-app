@@ -33,7 +33,7 @@ class IndexView(View):
             new_url.save()
             context = {
                 'form': form,
-                'new_url': new_url.url_hash,
+                'new_url': f"http://127.0.0.1:8000/{new_url.url_hash}",
                 'success': 'Successfully created'
             }
 

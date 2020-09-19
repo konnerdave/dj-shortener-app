@@ -1,57 +1,31 @@
 {% extends 'base.html' %}
-{% load widget_tweaks %}
+{% load static %}
 
-{% block main_content %}
-    <!-- Heading -->
-    <section>
-        <div class="jumbotron">
-            <div class="container">
-                <h1 class="display-4 text-center">URL Shortener</h1>
-            </div>
-        </div>
-    </section>
 
-    <section>
-        <!-- Notification Area -->
-        <div class="container">
-            {% if success %}
-                <div class="alert alert-success" role="alert">
-                    {{ success }}
-                </div>
-            {% elif errors %}
-                {% for key, value in errors.items %}
-                    <div class="alert alert-danger" role="alert">
-                        {{key}}{{ value }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-        <!-- URL Form -->
-        <div class="container">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label>{{ form.full_url.label }}</label>
-                    {% render_field form.full_url class="form-control" %}
-                </div>
-                <div class="form-group">
-                    <label>{{ form.url_hash.label }}</label>
-                    {% render_field form.url_hash class="form-control" %}
-                </div>
-                <button type="submit" class="btn btn-primary">Create</button>
-            </form>
-        </div>
-    </section>
+{% block content %}
 
-    {% if new_url %}
-        <!-- Short URL Navigation -->
-        <section>
-            <div class="jumbotron">
-                <div class="container">
-                    <a class="btn btn-success btn-lg btn-block text-center" href="http://127.0.0.1:8000/{{ new_url }}">http://127.0.0.1:8000/{{ new_url }}</a>
-                </div>
-            </div>
-        </section>
-    {% endif %}
+  {% include "shared/navbar.html" %}
 
-{% endblock main_content %}
+  <br>
+
+  <h4 class="text-center">Enter any long URL Lets shorten it!</h4>
+
+  <br>
+
+  <section>
+    
+    {% include "shared/notification.html" with success=success errors=errors %}
+
+    {% include "shortener/form.html" with form=form %}
+
+  </section>
+
+  <br>
+
+  {% if new_url %}
+
+    {% include "shortener/link.html" with new_url=new_url %}
+
+  {% endif %}
+
+{% endblock %}

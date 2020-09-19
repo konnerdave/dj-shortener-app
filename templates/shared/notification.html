@@ -1,0 +1,18 @@
+<!-- Notification Area -->
+<div class="container">
+  {% if success %}
+
+    <div class="alert alert-success" role="alert">
+      {{ success }}
+    </div>
+
+  {% elif errors %}
+
+    {% for key, value in errors.items %}
+      <div class="alert alert-danger" role="alert">
+          {{key}}{{ value }}
+      </div>
+    {% endfor %}
+
+  {% endif %}
+</div>

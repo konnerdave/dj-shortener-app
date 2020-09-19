@@ -1,0 +1,24 @@
+{% load static %}
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-light">
+  <div class="collapse navbar-collapse w-100 order-1 order-lg-0" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+    </ul>
+  </div>
+  <div class="d-flex w-100 order-0">
+    <div class="w-100">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <a class="navbar-brand text-center w-100" href="#">
+      <img src="{% static 'images/logo/easy-short.png' %}" alt="" height="150" width="150">
+    </a>
+    <span class="w-100"></span>
+  </div>
+</nav>
